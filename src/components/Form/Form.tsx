@@ -1,9 +1,10 @@
 import { Button } from "../Button";
+import styles from "./Form.module.scss";
 
 const Form = () => {
   return (
-    <form action="">
-      <div>
+    <form action="" className={styles.novaTarefa}>
+      <div className={styles.inputContainer}>
         <label htmlFor="task">Adicione um novo estudo:</label>
         <input
           type="text"
@@ -13,7 +14,7 @@ const Form = () => {
           required
         />
       </div>
-      <div>
+      <div className={styles.inputContainer}>
         <label htmlFor="time">Tempo</label>
         <input
           type="time"

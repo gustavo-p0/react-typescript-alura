@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import styles from "./List.module.scss";
 const List = () => {
   const tasks = [
     {
@@ -10,12 +11,12 @@ const List = () => {
     { id: uuid(), task: "TypeScript", time: "03:00:00" },
   ];
   return (
-    <aside>
+    <aside className={styles.listaTarefas}>
       <h2>Estudos do dia</h2>
       <ul>
         {tasks.map(({ id, task, time }) => {
           return (
-            <li key={id}>
+            <li key={id} className={styles.item}>
               <h3>{task}</h3>
               <span>{time}</span>
             </li>
