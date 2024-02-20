@@ -1,14 +1,23 @@
+import { ITask } from "../../../ts/interfaces/ITask";
 import styles from "./ListItem.module.scss";
 
 interface ListItemProps {
-  task: string;
-  time: string;
+  onClick: (task: ITask) => void;
+  task: ITask;
 }
 
-const ListItem = ({ task, time }: ListItemProps) => {
+const ListItem = ({ onClick, task }: ListItemProps) => {
+  const { task: taskName, time, current } = task;
+  const handleClick = () => {
+    onClick({ ...task, current: !current });
+  };
+
   return (
-    <li className={styles["item"]}>
-      <h3>{task}</h3>
+    <li
+      onClick={handleClick}
+      className={`${styles["item"]} ${current ? styles.itemSelecionado : ""}`}
+    >
+      <h3>{taskName}</h3>
       <span>{time}</span>
     </li>
   );
