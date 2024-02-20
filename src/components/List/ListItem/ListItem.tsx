@@ -7,7 +7,7 @@ interface ListItemProps {
 }
 
 const ListItem = ({ onClick, task }: ListItemProps) => {
-  const { task: taskName, time, current } = task;
+  const { task: taskName, time, current, completed } = task;
   const handleClick = () => {
     onClick({ ...task, current: !current });
   };
@@ -15,10 +15,18 @@ const ListItem = ({ onClick, task }: ListItemProps) => {
   return (
     <li
       onClick={handleClick}
-      className={`${styles["item"]} ${current ? styles.itemSelecionado : ""}`}
+      className={`${styles["item"]} ${current ? styles.itemSelecionado : ""} ${
+        completed ? styles.itemCompletado : ""
+      }`}
     >
       <h3>{taskName}</h3>
       <span>{time}</span>
+      {completed && (
+        <span
+          className={styles.concluido}
+          aria-label="Tarefa completada"
+        ></span>
+      )}
     </li>
   );
 };

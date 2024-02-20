@@ -10,6 +10,7 @@ function App() {
   const [currentTask, setCurrentTask] = useState<ITask | null>(null);
 
   const toggleCurrent = (toggledTask: ITask) => {
+    if (toggledTask.completed) return;
     setCurrentTask(toggledTask);
     setTasks((prevTasks) => {
       return prevTasks.map((task) => {
@@ -19,11 +20,23 @@ function App() {
     });
   };
 
+  const completeTask = () => {
+    if (currentTask) {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === currentTask.id
+            ? { ...currentTask, completed: true }
+            : task
+        )
+      );
+    }
+  };
+
   return (
     <div className={styles["AppStyle"]}>
       <Form onSubmit={setTasks} />
       <List tasks={tasks} handleToggleCurrent={toggleCurrent} />
-      <StopWatch task={currentTask} />
+      <StopWatch task={currentTask} onTimeOut={completeTask} />
     </div>
   );
 }

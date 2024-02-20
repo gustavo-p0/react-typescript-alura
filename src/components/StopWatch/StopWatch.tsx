@@ -7,23 +7,43 @@ import { Watch } from "./Watch";
 
 interface StopWatchProps {
   task: ITask | null;
+  onTimeOut: () => void;
 }
 
-const StopWatch = ({ task }: StopWatchProps) => {
+const StopWatch = ({ task, onTimeOut }: StopWatchProps) => {
   const [time, setTime] = useState<number>();
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    if (task) setTime(convertToSeconds(task.time));
-  }, [task]);
+    let timerId: number | undefined;
+    if (task?.current) {
+      setTime(convertToSeconds(task?.time));
+    }
 
-  console.log(time);
+    if (started) {
+      timerId = setInterval(() => {
+        if (time! > 0) {
+          setTime((prevTime) => --prevTime!);
+        } else {
+          onTimeOut();
+          clearInterval(timerId!);
+        }
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timerId);
+    };
+  }, [task, time, started]);
   return (
     <div className={styles.cronometro}>
       <p className={styles.titulo}>Escolha um card e inicie o cronômetro</p>
       <div className={styles.relogioWrapper}>
-        <Watch />
+        <Watch time={time} />
       </div>
-      <Button>Começar!</Button>
+      <Button disabled={!time} onClick={() => setStarted(true)}>
+        Começar!
+      </Button>
     </div>
   );
 };
