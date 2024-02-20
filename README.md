@@ -1,8 +1,8 @@
 # React: Escrevendo com Typescript
 
-[🌐 Live Demo]()
+[🌐 Live Demo](https://react-typescript-alura.vercel.app/)
 
-![preview]()
+![preview](https://github.com/gustavo-p0/react-typescript-alura/assets/83771792/dbb32f8a-418c-4fa7-a89f-e73923b56584)
 
 Aplicação prática chamada "Alura Studies", combina React e Typescript para criar um ambiente web onde poderá adicionar tarefas de estudo junto com o tempo dedicado a cada uma. Por exemplo, você poderá adicionar uma tarefa "React" com 1 hora de tempo e outra "Typescript" com 50 minutos.
 
