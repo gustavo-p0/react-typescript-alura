@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import styles from "./List.module.scss";
+import { ListItem } from "./ListItem/ListItem";
 const List = () => {
   const tasks = [
     {
@@ -15,12 +16,7 @@ const List = () => {
       <h2>Estudos do dia</h2>
       <ul>
         {tasks.map(({ id, task, time }) => {
-          return (
-            <li key={id} className={styles.item}>
-              <h3>{task}</h3>
-              <span>{time}</span>
-            </li>
-          );
+          return <ListItem key={id} task={task} time={time} />;
         })}
       </ul>
     </aside>
