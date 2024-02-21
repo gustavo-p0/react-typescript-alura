@@ -10,8 +10,6 @@ Estas tarefas serão exibidas em uma lista, onde poderão ser selecionadas. Ao s
 
 Além disso, será possível iniciar o cronômetro com o botão "Começar", o que ativará o temporizador. Quando o tempo de uma tarefa chegar a zero, ela será marcada como completada e não poderá mais ser clicada.
 
-Este curso oferece uma introdução abrangente ao desenvolvimento de aplicações React utilizando Typescript. Ministrado por Luiz Fernando Ribeiro e Alura, você aprenderá a criar um projeto React com Typescript do zero, utilizando o Create React App.
-
 ## Tecnologias usadas
 
 - NPM
